@@ -8,9 +8,8 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
-    Queue<PostNode> postQ;
-
-    private PostNode<Post> head; 
+    Queue<Post> postQ;
+    private PostNode<Post> head;
     private PostNode<Post> tail;
 
     @Override
@@ -31,19 +30,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addPost(Post p){
-        postQ = new LinkedList<PostNode>();
+        postQ = new LinkedList<Post>();
         if (postQ.isEmpty()) {
-            this.head = new PostNode<Post>(p, null);
+            this.head = new Post();
             postQ.add(this.head);
         } else {
             // If tail is null, this is the second element
             if (this.tail == null) {
-                this.tail = new PostNode<Post>(p, null);
+                //this.tail = new PostNode<Post>(p, null);
                 this.head.setNext(this.tail);
             } else {
 
                 PostNode<Post> previousTail = this.tail;
-                PostNode<Post> newTail = new PostNode<Post>(p, null);
+                //PostNode<Post> newTail = new PostNode<Post>(p, null);
                 previousTail.setNext(newTail);
                 this.tail = newTail;
                 postQ.add(this.tail);
