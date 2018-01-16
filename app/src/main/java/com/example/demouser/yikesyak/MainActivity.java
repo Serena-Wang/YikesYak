@@ -10,7 +10,7 @@ import java.util.Stack;
 public class MainActivity extends AppCompatActivity {
     Queue<PostNode> postQ;
 
-    private PostNode<Post> head;
+    private PostNode<Post> head; 
     private PostNode<Post> tail;
 
     @Override
