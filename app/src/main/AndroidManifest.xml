@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-Home_Layout
         <activity android:name=".HomePage">
-master
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,15 +17,28 @@ master
             </intent-filter>
         </activity>
 
-        <activity android:label= "@string/app_name" android:name=".ComplimentsSection"></activity>
-        <activity android:label= "@string/app_name" android:name=".ConfessionSection"></activity>
-        <activity android:label= "@string/app_name" android:name=".QASection"></activity>
+        <activity
+            android:name=".ComplimentsSection"
+            android:label="@string/compliments"
+            android:parentActivityName=".HomePage">
 
-Home_Layout
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
- master
-    </application>
+            <meta-data
+             android:name="android.support.PARENT_ACTIVITY"
+             android:value="com.example.demouser.yikesyak.HomePage" />
+         </activity>
 
-</manifest>
+         <activity
+             android:name=".ConfessionSection"
+            android:label="@string/app_name">
+
+         </activity>
+        <activity
+        android:name=".QASection"
+        android:label="@string/app_name"></activity>
+
+    <meta-data
+        android:name="preloaded_fonts"
+        android:resource="@array/preloaded_fonts" />
+</application>
+
+    </manifest>
