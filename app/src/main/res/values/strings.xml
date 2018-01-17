@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">YikesYak</string>
+    <string name="type_a_new_post">Type a new post</string>
 </resources>
