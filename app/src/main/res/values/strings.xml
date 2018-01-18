@@ -6,5 +6,6 @@ Home_Layout
     <string name="confessional">Confessional</string>
     <string name="q_a"><![CDATA[Q&A]]></string>
     <string name="compliments">Compliments</string>
+    <string name="type_a_new_post">Compliments</string>
 master
 </resources>

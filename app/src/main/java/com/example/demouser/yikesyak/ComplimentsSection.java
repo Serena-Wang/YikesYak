@@ -9,5 +9,8 @@ public class ComplimentsSection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.compliments_main);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 }
