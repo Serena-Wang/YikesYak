@@ -4,75 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:ignore="ExtraText">
     tools:context="com.example.demouser.yikesyak.QASection">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:background="@android:color/white"
+
+    <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:gravity="bottom"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#00AAEE"
-            android:text="@string/top"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginTop="-5dp"
-            android:layout_weight="2"
-            android:background="@android:color/white"
-            android:text="@string/type_a_new_post" />
+        <include
+            android:id="@+id/includedLayout"
+            android:visibility="gone"
+            layout="@layout/postlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <Button
+        <EditText
+            android:id="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#e3edf4"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/post"
+            android:layout_toStartOf="@+id/post"
+            android:background="@android:color/white"
+            android:inputType="text"
+            />
+
+        <Button
+            android:id="@+id/post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:elevation="7dp"
-            android:text="@string/post"
-            android:textColor="@android:color/black"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:text="Post"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="50dp" />
+    </RelativeLayout>
 
 
 </android.support.constraint.ConstraintLayout>
+
