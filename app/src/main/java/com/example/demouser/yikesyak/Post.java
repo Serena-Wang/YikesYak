@@ -1,7 +1,9 @@
 package com.example.demouser.yikesyak;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -26,6 +28,8 @@ public class Post {
     private ImageButton report;
     private TextView votes;
     private Button comments;
+    //private String subject;
+    //private String message;
 
 /*    public Post(String thisText, TextView date, TextView time, ImageButton upvote, ImageButton downvote, ImageButton report,
                 TextView votes, Button comments) {
@@ -65,10 +69,17 @@ public class Post {
     }
 
     private void reportButton() {
-        final ImageButton button = report;
+        final ImageButton button = this.report;
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Intent intent = new Intent (Intent.ACTION_SENDTO, Uri.fromParts("mailto",
+                        "gomez22n@mtholyoke.edu", null));
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+                intent.putExtra(Intent.EXTRA_TEXT, "Message body");
+                //startActivity(Intent.createChooser(intent,"send mail"));
+
 
             }
         });

@@ -64,8 +64,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
+            android:background="#e3edf4"
             android:elevation="7dp"
             android:text="Post"
+            android:textStyle="bold"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absoluteY="50dp" />
     </RelativeLayout>
