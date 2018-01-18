@@ -19,7 +19,7 @@ public class ConfessionSection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.compliments_main);
+        setContentView(R.layout.confession_main);
         content = (EditText) findViewById(R.id.content);
         getPostContent();
         addPost();
