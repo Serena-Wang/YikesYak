@@ -9,15 +9,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * Created by demouser on 1/16/18.
+ * Represents a text post.
  */
+public class Post {
 
-public class Post{
-
-    private EditText text;
+    private TextView text;
+    private String thisText;
     private TextView date;
     private TextView time;
     private ImageButton upvote;
@@ -26,7 +27,20 @@ public class Post{
     private TextView votes;
     private Button comments;
 
-    public Post(EditText text, TextView date, TextView time, ImageButton upvote, ImageButton downvote, ImageButton report,
+/*    public Post(String thisText, TextView date, TextView time, ImageButton upvote, ImageButton downvote, ImageButton report,
+                TextView votes, Button comments) {
+        this.thisText = thisText;
+        this.date = date;
+        this.time = time;
+        this.upvote = upvote;
+        this.downvote = downvote;
+        this.report = report;
+        this.votes = votes;
+        this.comments = comments;
+        vote();
+    }*/
+
+    public Post(TextView text, TextView date, TextView time, ImageButton upvote, ImageButton downvote, ImageButton report,
                 TextView votes, Button comments) {
         this.text = text;
         this.date = date;
@@ -36,9 +50,10 @@ public class Post{
         this.report = report;
         this.votes = votes;
         this.comments = comments;
+        vote();
     }
 
-    private void holdButton(){
+    private void holdButton() {
         final Button button = comments;
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +64,7 @@ public class Post{
         });
     }
 
-    private void reportButton(){
+    private void reportButton() {
         final ImageButton button = report;
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -59,19 +74,29 @@ public class Post{
         });
     }
 
-    private void vote(){
+    private void vote() {
         final ImageButton upvote = this.upvote;
         final ImageButton downvote = this.downvote;
         upvote.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int current = Integer.parseInt(votes.getText().toString());
-                votes.setText(current++);
+                if (!votes.getText().equals("")) {
+                    int current = Integer.parseInt(votes.getText().toString());
+                    current++;
+                    votes.setText(Integer.toString(current));
+                } else {
+                    votes.setText(Integer.toString(1));
+                }
             }
         });
         downvote.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int current = Integer.parseInt(votes.getText().toString());
-                votes.setText(current--);
+                if (!votes.getText().equals("")) {
+                    int current = Integer.parseInt(votes.getText().toString());
+                    current--;
+                    votes.setText(Integer.toString(current));
+                } else {
+                    votes.setText(Integer.toString(1));
+                }
             }
         });
     }
