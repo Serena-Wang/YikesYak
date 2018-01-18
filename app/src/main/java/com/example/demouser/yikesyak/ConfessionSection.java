@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+
 public class ConfessionSection extends AppCompatActivity {
 
     private String postContent;
@@ -32,6 +34,12 @@ public class ConfessionSection extends AppCompatActivity {
             public void onClick(View v) {
                 TextView thisText = (TextView) findViewById(R.id.text);
                 thisText.setText(postContent);
+                TextView date = (TextView) findViewById(R.id.date);
+                long dateText = System.currentTimeMillis();
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy h:mm a");
+                String dateString = sdf.format(dateText);
+                date.setText(dateString);
+                thisText.setText(postContent);
                 final Post newPost = new Post(thisText, (TextView) findViewById(R.id.date), (TextView)findViewById(R.id.time),
                         (ImageButton) findViewById(R.id.upvote), (ImageButton)findViewById(R.id.downvote),
                         (ImageButton)findViewById(R.id.report),(TextView)findViewById(R.id.votes),(Button)findViewById(R.id.comments));
@@ -47,11 +55,8 @@ public class ConfessionSection extends AppCompatActivity {
             // the user's changes are saved here
             public void onTextChanged(CharSequence c, int start, int before, int count) {
                 postContent = c.toString();
-                //setTitle(c.toString());
                 if(complete) {
                     postContent = c.toString();
-                    setTitle("");
-                    content.setEnabled(false);
                 }
             }
 

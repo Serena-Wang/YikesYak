@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+
 public class ComplimentsSection extends AppCompatActivity {
 
     private String postContent;
@@ -32,7 +34,12 @@ public class ComplimentsSection extends AppCompatActivity {
         postButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 TextView thisText = (TextView) findViewById(R.id.text);
-                thisText.setText(getTitle());
+                thisText.setText(postContent);
+                TextView date = (TextView) findViewById(R.id.date);
+                long dateText = System.currentTimeMillis();
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy h:mm a");
+                String dateString = sdf.format(dateText);
+                date.setText(dateString);
                 final Post newPost = new Post(thisText, (TextView) findViewById(R.id.date), (TextView)findViewById(R.id.time),
                         (ImageButton) findViewById(R.id.upvote), (ImageButton)findViewById(R.id.downvote),
                         (ImageButton)findViewById(R.id.report),(TextView)findViewById(R.id.votes),(Button)findViewById(R.id.comments));
@@ -47,10 +54,9 @@ public class ComplimentsSection extends AppCompatActivity {
         content.addTextChangedListener(new TextWatcher() {
             // the user's changes are saved here
             public void onTextChanged(CharSequence c, int start, int before, int count) {
-                setTitle(c.toString());
+                postContent = c.toString();
                 if(complete) {
-                    setTitle("");
-                    content.setEnabled(false);
+                    postContent = c.toString();
                 }
             }
 

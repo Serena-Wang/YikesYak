@@ -1,18 +1,16 @@
 package com.example.demouser.yikesyak;
 
-import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import java.text.SimpleDateFormat;
 
 public class QASection extends AppCompatActivity {
 
@@ -34,7 +32,12 @@ public class QASection extends AppCompatActivity {
         postButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 TextView thisText = (TextView) findViewById(R.id.text);
-                thisText.setText(getTitle());
+                TextView date = (TextView) findViewById(R.id.date);
+                long dateText = System.currentTimeMillis();
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy h:mm a");
+                String dateString = sdf.format(dateText);
+                date.setText(dateString);
+                thisText.setText(postContent);
                 final Post newPost = new Post(thisText, (TextView) findViewById(R.id.date), (TextView)findViewById(R.id.time),
                         (ImageButton) findViewById(R.id.upvote), (ImageButton)findViewById(R.id.downvote),
                         (ImageButton)findViewById(R.id.report),(TextView)findViewById(R.id.votes),(Button)findViewById(R.id.comments));
@@ -49,10 +52,10 @@ public class QASection extends AppCompatActivity {
         content.addTextChangedListener(new TextWatcher() {
             // the user's changes are saved here
             public void onTextChanged(CharSequence c, int start, int before, int count) {
-                setTitle(c.toString());
+                postContent = c.toString();
                 if(complete) {
                     setTitle("");
-                    content.setEnabled(false);
+                    postContent = c.toString();
                 }
             }
 
@@ -61,6 +64,7 @@ public class QASection extends AppCompatActivity {
             }
 
             public void afterTextChanged(Editable c) {
+
             }
         });
     }
