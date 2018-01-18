@@ -8,5 +8,7 @@ Home_Layout
     <string name="compliments">Compliments</string>
 
     <string name="type_a_new_post">Type a new post</string>
+    <string name="post">Post</string>
+    <string name="top">Top</string>
     master
 </resources>
