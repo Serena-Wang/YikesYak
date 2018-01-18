@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +50,6 @@ public class ConfessionSection extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     //Method to open the dialog to post a feed
@@ -81,7 +79,6 @@ public class ConfessionSection extends AppCompatActivity {
                 pa.notifyDataSetChanged();
                 //Scroll the RecyclerView to the bottom.
                 recList.smoothScrollToPosition(pa.getItemCount());
-
             }
         });
 
