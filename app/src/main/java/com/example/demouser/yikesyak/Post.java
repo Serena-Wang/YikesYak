@@ -17,21 +17,21 @@ import android.widget.TextView;
  */
 public class Post {
 
-    private TextView text;
+    private TextView textView;
     private String thisText;
-    private TextView date;
-    private TextView time;
+    private TextView dateum;
     private ImageButton upvote;
     private ImageButton downvote;
     private ImageButton report;
     private TextView votes;
     private Button comments;
+    public String text;
+    public String date;
 
-/*    public Post(String thisText, TextView date, TextView time, ImageButton upvote, ImageButton downvote, ImageButton report,
+/*    public Post(TextView text, TextView date, ImageButton upvote, ImageButton downvote, ImageButton report,
                 TextView votes, Button comments) {
-        this.thisText = thisText;
+        this.text = text;
         this.date = date;
-        this.time = time;
         this.upvote = upvote;
         this.downvote = downvote;
         this.report = report;
@@ -39,19 +39,6 @@ public class Post {
         this.comments = comments;
         vote();
     }*/
-
-    public Post(TextView text, TextView date, TextView time, ImageButton upvote, ImageButton downvote, ImageButton report,
-                TextView votes, Button comments) {
-        this.text = text;
-        this.date = date;
-        this.time = time;
-        this.upvote = upvote;
-        this.downvote = downvote;
-        this.report = report;
-        this.votes = votes;
-        this.comments = comments;
-        vote();
-    }
 
     private void holdButton() {
         final Button button = comments;

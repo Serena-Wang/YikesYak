@@ -1,29 +1,42 @@
 package com.example.demouser.yikesyak;
 
-import android.support.constraint.ConstraintLayout;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConfessionSection extends AppCompatActivity {
 
-    private String postContent;
-    private boolean complete;
-    private EditText content = null;
+    private RecyclerView recList;
+    private List<Post> list;
+    private TextView subEditText;
+    private PostAdapter pa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confession_main);
-        content = (EditText) findViewById(R.id.content);
-        getPostContent();
+        //Declares the view for your feed
+        list = new ArrayList<Post>();
+        //Set the layout and the RecyclerView
+        recList = (RecyclerView) findViewById(R.id.postList);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recList.setLayoutManager(llm);
+        pa = new PostAdapter(list);
+        //Set the adapter for the recyclerlist
+        recList.setAdapter(pa);
         addPost();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -32,41 +45,54 @@ public class ConfessionSection extends AppCompatActivity {
         final Button postButton = findViewById(R.id.post);
         postButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                TextView thisText = (TextView) findViewById(R.id.text);
-                thisText.setText(postContent);
-                TextView date = (TextView) findViewById(R.id.date);
+                switch (v.getId()) {
+                    case R.id.post:
+                        openDialog();
+                }
+            }
+        });
+
+    }
+
+    //Method to open the dialog to post a feed
+    private void openDialog(){
+        LayoutInflater inflater = LayoutInflater.from(ConfessionSection.this);
+        View subView = inflater.inflate(R.layout.dialog, null);
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setView(subView);
+        //Build the AlertDialog.
+        AlertDialog alertDialog = builder.create();
+        subEditText = (EditText)subView.findViewById(R.id.dialogEditText);
+
+        builder.setPositiveButton("YIKES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Post post = new Post();
+                post.text = subEditText.getText().toString();
                 long dateText = System.currentTimeMillis();
                 SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy h:mm a");
                 String dateString = sdf.format(dateText);
-                date.setText(dateString);
-                thisText.setText(postContent);
-                final Post newPost = new Post(thisText, (TextView) findViewById(R.id.date), (TextView)findViewById(R.id.time),
-                        (ImageButton) findViewById(R.id.upvote), (ImageButton)findViewById(R.id.downvote),
-                        (ImageButton)findViewById(R.id.report),(TextView)findViewById(R.id.votes),(Button)findViewById(R.id.comments));
-                ((ConstraintLayout)findViewById(R.id.includedLayout)).setVisibility(View.VISIBLE);
-                complete=true;
+                post.date = dateString;
+                //Add data to the list
+                list.add(post);
+                //Notify the Adapter so that you can see the changes.
+                pa.notifyDataSetChanged();
+                //Scroll the RecyclerView to the bottom.
+                recList.smoothScrollToPosition(pa.getItemCount());
+
             }
         });
-    }
 
-    protected void getPostContent(){
-
-        content.addTextChangedListener(new TextWatcher() {
-            // the user's changes are saved here
-            public void onTextChanged(CharSequence c, int start, int before, int count) {
-                postContent = c.toString();
-                if(complete) {
-                    postContent = c.toString();
-                }
-            }
-
-            public void beforeTextChanged(CharSequence c, int start, int count, int after) {
-                // this space intentionally left blank
-            }
-
-            public void afterTextChanged(Editable c) {
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //This will close the Dialog
             }
         });
+
+        builder.show();
     }
 
 }

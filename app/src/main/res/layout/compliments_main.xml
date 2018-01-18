@@ -39,38 +39,24 @@
         android:layout_alignParentStart="true"
         android:orientation="horizontal">
 
-        <include
-            android:id="@+id/includedLayout"
-            android:visibility="gone"
-            layout="@layout/postlayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-            <!--android:visibility="gone"
-                android:layout_above="@id/post"-->
-
-
-        <EditText
-            android:id="@+id/content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/post"
-            android:layout_toStartOf="@+id/post"
-            android:background="@android:color/white"
-            android:inputType="text"
-            />
-
         <Button
             android:id="@+id/post"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:elevation="7dp"
-            android:text="Post"
+            android:text="Yak a yikes"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absoluteY="50dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/postList"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/post" />
+
     </RelativeLayout>
 
 
