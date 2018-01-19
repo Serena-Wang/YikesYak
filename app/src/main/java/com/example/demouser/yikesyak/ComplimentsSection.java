@@ -40,6 +40,8 @@ public class ComplimentsSection extends AppCompatActivity {
         recList = (RecyclerView) findViewById(R.id.postList);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
+        llm.setReverseLayout(true);
+        llm.setStackFromEnd(true);
         recList.setLayoutManager(llm);
         pa = new PostAdapter(list);
         //Set the adapter for the recyclerlist

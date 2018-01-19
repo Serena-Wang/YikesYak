@@ -1,64 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:ignore="ExtraText">
-tools:context="com.example.demouser.yikesyak.ConfessionSection">
-
-
-<RelativeLayout
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_alignParentBottom="true"
-    android:gravity="bottom"
-    android:orientation="horizontal"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:layout_editor_absoluteX="0dp">
+    tools:ignore="ExtraText"
+    tools:context="com.example.demouser.yikesyak.ConfessionSection">
+
+        <Button
+            android:id="@+id/post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:elevation="7dp"
+            android:text="Yak a yikes"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="50dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/postList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/post" />
 
 </RelativeLayout>
 
-<ListView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="8dp"
-    android:layout_weight="1"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_alignParentStart="true"
-    android:orientation="horizontal">
-
-    <Button
-        android:id="@+id/post"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:elevation="7dp"
-        android:text="Yak a yikes"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="50dp" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/postList"
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/post" />
-
-</RelativeLayout>
-
-
-</android.support.constraint.ConstraintLayout>
 

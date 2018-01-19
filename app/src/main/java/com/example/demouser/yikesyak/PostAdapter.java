@@ -22,10 +22,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
 
     @Override
     public int getItemCount() {
-        if(postList!=null) {
-            return postList.size();
-        }
-        return 0;
+        return postList.size();
     }
 
     @Override
@@ -47,15 +44,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     }
 
     public static class PostHolder extends RecyclerView.ViewHolder {
-        protected TextView feedText;
-        protected TextView dateText;
-        protected ImageButton upText;
-        protected ImageButton downText;
-        protected TextView voteNum;
-        protected Button commentsButton;
-        protected ImageButton reportButton;
+        private TextView feedText;
+        private TextView dateText;
+        private ImageButton upText;
+        private ImageButton downText;
+        private TextView voteNum;
+        private Button commentsButton;
+        private ImageButton reportButton;
 
-        public PostHolder(View v) {
+        private PostHolder(View v) {
             super(v);
             feedText = (TextView) v.findViewById(R.id.text);
             dateText = (TextView) v.findViewById(R.id.date);
@@ -68,33 +65,25 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
         }
 
         private void vote() {
+            voteNum.setText("0");
             upText.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    if (!voteNum.getText().equals("")) {
-                        int current = Integer.parseInt(voteNum.getText().toString());
-                        current++;
-                        voteNum.setText(Integer.toString(current));
-                    } else {
-                        voteNum.setText(Integer.toString(1));
-                    }
+                    int current = Integer.parseInt(voteNum.getText().toString());
+                    current++;
+                    voteNum.setText(Integer.toString(current));
                 }
             });
             downText.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    if (!voteNum.getText().equals("")) {
-                        int current = Integer.parseInt(voteNum.getText().toString());
-                        current--;
-                        voteNum.setText(Integer.toString(current));
-                    } else {
-                        voteNum.setText(Integer.toString(1));
-                    }
+                    int current = Integer.parseInt(voteNum.getText().toString());
+                    current--;
+                    voteNum.setText(Integer.toString(current));
                 }
             });
         }
 
         private void holdButton() {
             final Button button = commentsButton;
-
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
 
@@ -105,7 +94,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
 
         private void reportButton() {
             final ImageButton button = reportButton;
-
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
 

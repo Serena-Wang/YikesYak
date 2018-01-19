@@ -1,11 +1,13 @@
 package com.example.demouser.yikesyak;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +24,7 @@ public class ConfessionSection extends AppCompatActivity {
     private List<Post> list;
     private TextView subEditText;
     private PostAdapter pa;
+    private Button postButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,20 +32,22 @@ public class ConfessionSection extends AppCompatActivity {
         setContentView(R.layout.confession_main);
         //Declares the view for your feed
         list = new ArrayList<Post>();
-        addPost();
         //Set the layout and the RecyclerView
         recList = (RecyclerView) findViewById(R.id.postList);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
+        llm.setReverseLayout(true);
+        llm.setStackFromEnd(true);
         recList.setLayoutManager(llm);
         pa = new PostAdapter(list);
         //Set the adapter for the recyclerlist
         recList.setAdapter(pa);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        addPost();
     }
 
     protected void addPost(){
-        final Button postButton = findViewById(R.id.post);
+        Button postButton = findViewById(R.id.post);
         postButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 switch (v.getId()) {
@@ -72,8 +77,7 @@ public class ConfessionSection extends AppCompatActivity {
                 post.text = subEditText.getText().toString();
                 long dateText = System.currentTimeMillis();
                 SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy h:mm a");
-                String dateString = sdf.format(dateText);
-                post.date = dateString;
+                post.date = sdf.format(dateText);
                 //Add data to the list
                 list.add(post);
                 //Notify the Adapter so that you can see the changes.
@@ -89,7 +93,6 @@ public class ConfessionSection extends AppCompatActivity {
                 //This will close the Dialog
             }
         });
-
         builder.show();
     }
 

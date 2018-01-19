@@ -22,18 +22,4 @@ public class Post {
     public String text;
     public String date;
 
-/*    public Post(TextView text, TextView date, ImageButton upvote, ImageButton downvote, ImageButton report,
-                TextView votes, Button comments) {
-        this.text = text;
-        this.date = date;
-        this.upvote = upvote;
-        this.downvote = downvote;
-        this.report = report;
-        this.votes = votes;
-        this.comments = comments;
-        vote();
-    }*/
-
-
-
 }
