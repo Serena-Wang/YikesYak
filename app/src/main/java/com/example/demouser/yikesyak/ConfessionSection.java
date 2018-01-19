@@ -1,5 +1,15 @@
 package com.example.demouser.yikesyak;
 
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class ConfessionSection extends AppCompatActivity {
+
+
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
@@ -26,10 +36,16 @@ public class ConfessionSection extends AppCompatActivity {
     private PostAdapter pa;
     private Button postButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confession_main);
+
+
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         //Declares the view for your feed
         list = new ArrayList<Post>();
         //Set the layout and the RecyclerView
@@ -94,6 +110,7 @@ public class ConfessionSection extends AppCompatActivity {
             }
         });
         builder.show();
+
     }
 
 }
