@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class ConfessionSection extends AppCompatActivity {
         setContentView(R.layout.confession_main);
         //Declares the view for your feed
         list = new ArrayList<Post>();
+        addPost();
         //Set the layout and the RecyclerView
         recList = (RecyclerView) findViewById(R.id.postList);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -36,8 +38,7 @@ public class ConfessionSection extends AppCompatActivity {
         pa = new PostAdapter(list);
         //Set the adapter for the recyclerlist
         recList.setAdapter(pa);
-        addPost();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     protected void addPost(){

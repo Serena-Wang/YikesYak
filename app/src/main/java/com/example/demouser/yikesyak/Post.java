@@ -2,7 +2,9 @@ package com.example.demouser.yikesyak;
 
 import android.content.Context;
 import android.media.Image;
+import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -17,14 +19,6 @@ import android.widget.TextView;
  */
 public class Post {
 
-    private TextView textView;
-    private String thisText;
-    private TextView dateum;
-    private ImageButton upvote;
-    private ImageButton downvote;
-    private ImageButton report;
-    private TextView votes;
-    private Button comments;
     public String text;
     public String date;
 
@@ -40,52 +34,6 @@ public class Post {
         vote();
     }*/
 
-    private void holdButton() {
-        final Button button = comments;
 
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-
-            }
-        });
-    }
-
-    private void reportButton() {
-        final ImageButton button = report;
-
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-            }
-        });
-    }
-
-    private void vote() {
-        final ImageButton upvote = this.upvote;
-        final ImageButton downvote = this.downvote;
-        upvote.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (!votes.getText().equals("")) {
-                    int current = Integer.parseInt(votes.getText().toString());
-                    current++;
-                    votes.setText(Integer.toString(current));
-                } else {
-                    votes.setText(Integer.toString(1));
-                }
-            }
-        });
-        downvote.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (!votes.getText().equals("")) {
-                    int current = Integer.parseInt(votes.getText().toString());
-                    current--;
-                    votes.setText(Integer.toString(current));
-                } else {
-                    votes.setText(Integer.toString(1));
-                }
-            }
-        });
-    }
 
 }
