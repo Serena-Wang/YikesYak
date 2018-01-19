@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.demouser.yikesyak">
-
+    <uses-permission android:name= "android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,20 +9,61 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-Home_Layout
-        <activity android:name=".HomePage">
-master
+
+
+        <activity android:name=".LogIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-Home_Layout
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
- master
-    </application>
 
-</manifest>
+        <activity
+            android:name=".HomePage"
+            android:parentActivityName=".LogIn" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.demouser.yikesyak.LogIn" />
+
+        </activity>
+
+        <activity
+            android:name=".ComplimentsSection"
+            android:label="@string/compliments"
+            android:parentActivityName=".HomePage">
+
+            <meta-data
+             android:name="android.support.PARENT_ACTIVITY"
+             android:value="com.example.demouser.yikesyak.HomePage" />
+         </activity>
+
+         <activity
+             android:name=".ConfessionSection"
+            android:label="@string/confessional"
+             android:parentActivityName=".HomePage">
+
+             <meta-data
+                 android:name="android.support.PARENT_ACTIVITY"
+                 android:value="com.example.demouser.yikesyak.HomePage" />
+
+         </activity>
+
+        <activity
+        android:name=".QASection"
+        android:label="@string/q_a"
+            android:parentActivityName=".HomePage">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.demouser.yikesyak.HomePage" />
+
+
+        </activity>
+
+    <meta-data
+        android:name="preloaded_fonts"
+        android:resource="@array/preloaded_fonts" />
+</application>
+
+    </manifest>
