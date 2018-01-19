@@ -6,23 +6,47 @@
     tools:ignore="ExtraText"
     tools:context="com.example.demouser.yikesyak.ConfessionSection">
 
-        <Button
-            android:id="@+id/post"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:elevation="7dp"
-            android:text="Yak a yikes"
-            tools:layout_editor_absoluteX="148dp"
-            tools:layout_editor_absoluteY="50dp" />
+            android:orientation="horizontal"
+            android:id="@+id/linearLayout2">
+
+
+
+                <Button
+                    android:id="@+id/post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:elevation="7dp"
+                    android:layout_weight="1"
+                    android:text="Yak a yikes"
+                    tools:layout_editor_absoluteX="148dp"
+                    tools:layout_editor_absoluteY="50dp" />
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:elevation="7dp"
+                    android:layout_weight="1"
+                    android:text="To Top"
+                    tools:layout_editor_absoluteX="148dp"
+                    tools:layout_editor_absoluteY="50dp" />
+        </LinearLayout>
+
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/postList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/post" />
+            android:layout_below="@+id/linearLayout2" />
+
 
 </RelativeLayout>
 
