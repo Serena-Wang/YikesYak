@@ -9,9 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+ layout_update
 
 
         <activity android:name=".LogIn">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,6 +23,7 @@
         </activity>
 
         <activity
+
             android:name=".HomePage"
             android:parentActivityName=".LogIn" >
             <meta-data
@@ -52,11 +56,13 @@
         <activity
         android:name=".QASection"
         android:label="@string/q_a"
+
             android:parentActivityName=".HomePage">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.demouser.yikesyak.HomePage" />
+
 
 
         </activity>
@@ -67,3 +73,6 @@
 </application>
 
     </manifest>
+
+
+

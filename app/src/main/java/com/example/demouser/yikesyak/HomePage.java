@@ -6,13 +6,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import android.view.View;
+import android.widget.Button;
+
 public class HomePage extends AppCompatActivity {
     public Button confessional, QA, compliments;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page_main);
+
         confessional = (Button) findViewById(R.id.button5);
         confessional.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -49,4 +54,6 @@ public class HomePage extends AppCompatActivity {
 
 
     }
+
+
 }
