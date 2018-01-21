@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.demouser.yikesyak">
-    <uses-permission android:name= "android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,12 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
- layout_update
-
-
-        <activity android:name=".LogIn">
-
-
+        <activity android:name=".HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,39 +18,29 @@
         </activity>
 
         <activity
-
-            android:name=".HomePage"
-            android:parentActivityName=".LogIn" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.demouser.yikesyak.LogIn" />
-
-        </activity>
-
-        <activity
             android:name=".ComplimentsSection"
             android:label="@string/compliments"
             android:parentActivityName=".HomePage">
 
             <meta-data
-             android:name="android.support.PARENT_ACTIVITY"
-             android:value="com.example.demouser.yikesyak.HomePage" />
-         </activity>
-
-         <activity
-             android:name=".ConfessionSection"
-            android:label="@string/confessional"
-             android:parentActivityName=".HomePage">
-
-             <meta-data
-                 android:name="android.support.PARENT_ACTIVITY"
-                 android:value="com.example.demouser.yikesyak.HomePage" />
-
-         </activity>
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.demouser.yikesyak.HomePage" />
+        </activity>
 
         <activity
-        android:name=".QASection"
-        android:label="@string/q_a"
+            android:name=".ConfessionSection"
+            android:label="@string/confessional"
+            android:parentActivityName=".HomePage">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.demouser.yikesyak.HomePage" />
+
+        </activity>
+
+        <activity
+            android:name=".QASection"
+            android:label="@string/q_a"
 
             android:parentActivityName=".HomePage">
 
@@ -67,12 +52,9 @@
 
         </activity>
 
-    <meta-data
-        android:name="preloaded_fonts"
-        android:resource="@array/preloaded_fonts" />
-</application>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
 
-    </manifest>
-
-
-
+</manifest>

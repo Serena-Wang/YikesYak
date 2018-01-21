@@ -1,6 +1,8 @@
 package com.example.demouser.yikesyak;
 
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,6 +64,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
             commentsButton = (Button) v.findViewById(R.id.comments);
             reportButton = (ImageButton) v.findViewById(R.id.report);
             vote();
+            reportButton();
         }
 
         private void vote() {
@@ -96,12 +99,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
             final ImageButton button = reportButton;
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-
+                    Intent intent = new Intent (Intent.ACTION_SEND);
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"gomez22n@mtholyoke.edu"});
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+                    intent.putExtra(Intent.EXTRA_TEXT, "Message body");
+                    v.getContext().startActivity(intent);
                 }
+
             });
         }
     }
 
 }
-
-
