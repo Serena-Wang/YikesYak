@@ -22,69 +22,6 @@ import android.widget.TextView;
  * Created by demouser on 1/16/18.
  */
 
-public class Post{
-
-    private EditText text;
-    private TextView date;
-    private TextView time;
-    private ImageButton upvote;
-    private ImageButton downvote;
-    private ImageButton report;
-    private TextView votes;
-    private Button comments;
-
-    public Post(EditText text, TextView date, TextView time, ImageButton upvote, ImageButton downvote, ImageButton report,
-                TextView votes, Button comments) {
-        this.text = text;
-        this.date = date;
-        this.time = time;
-        this.upvote = upvote;
-        this.downvote = downvote;
-        this.report = report;
-        this.votes = votes;
-        this.comments = comments;
-    }
-
-    private void holdButton(){
-        final Button button = comments;
-
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-
-            }
-        });
-    }
-
-    private void reportButton(){
-        final ImageButton button = report;
-
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-            }
-        });
-    }
-
-    private void vote(){
-        final ImageButton upvote = this.upvote;
-        final ImageButton downvote = this.downvote;
-        upvote.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                int current = Integer.parseInt(votes.getText().toString());
-                votes.setText(current++);
-            }
-        });
-        downvote.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                int current = Integer.parseInt(votes.getText().toString());
-                votes.setText(current--);
-            }
-        });
-    }
-
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * Represents a text post.

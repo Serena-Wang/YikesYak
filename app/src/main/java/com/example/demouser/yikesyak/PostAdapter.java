@@ -29,9 +29,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     public void onBindViewHolder(PostHolder postHolder, int i) {
         Post post = postList.get(i);
         //Set the text of the feed with your data
-        postHolder.feedText.setText(post.text);
+        postHolder.feedText.setText((CharSequence) post.text);
         postHolder.feedText.setTypeface(postHolder.feedText.getTypeface(), Typeface.BOLD);
-        postHolder.dateText.setText(post.date);
+        postHolder.dateText.setText((CharSequence) post.date);
     }
 
     @Override
