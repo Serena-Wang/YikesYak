@@ -64,6 +64,36 @@
 
 
         </activity>
+        <activity
+            android:name=".CommentsSection"
+            android:label="@string/comments"
+            android:parentActivityName=".ComplimentsSection">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.demouser.yikesyak.ComplimentsSection" />
+
+        </activity>
+        <activity
+            android:name=".CommentsQA"
+            android:label="@string/comments"
+            android:parentActivityName=".ComplimentsSection">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.demouser.yikesyak.ComplimentsSection" />
+
+        </activity>
+        <activity
+            android:name=".CommentsConfesh"
+            android:label="@string/comments"
+            android:parentActivityName=".ConfessionSection">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.demouser.yikesyak.ConfessionSection" />
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

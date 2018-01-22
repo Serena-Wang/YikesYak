@@ -1,9 +1,15 @@
 package com.example.demouser.yikesyak;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +23,7 @@ import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     private List<Post> postList;
+    private List<Comment> commentList;
 
     public PostAdapter(List<Post> postList) {
         this.postList = postList;
@@ -24,7 +31,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
 
     @Override
     public int getItemCount() {
-        return postList.size();
+        if(postList!=null) {
+            return postList.size();
+        }
+        else{
+            return 0;
+        }
     }
 
     @Override
@@ -33,6 +45,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
         //Set the text of the feed with your data
         postHolder.feedText.setText((CharSequence) post.text);
         postHolder.feedText.setTypeface(postHolder.feedText.getTypeface(), Typeface.BOLD);
+        postHolder.dateText.setText(post.date);
+        postHolder.voteNum.setText(String.valueOf(post.votes));
         postHolder.dateText.setText((CharSequence) post.date);
     }
 
@@ -41,7 +55,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
         View itemView = LayoutInflater.
                 from(viewGroup.getContext()).
                 inflate(R.layout.postlayout, viewGroup, false);
-
         return new PostHolder(itemView);
     }
 
@@ -64,6 +77,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
             commentsButton = (Button) v.findViewById(R.id.comments);
             reportButton = (ImageButton) v.findViewById(R.id.report);
             vote();
+            commentsButton();
             reportButton();
         }
 
@@ -85,12 +99,24 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
             });
         }
 
-        private void holdButton() {
+        private void commentsButton() {
             final Button button = commentsButton;
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-
-
+                    Context con = v.getContext();
+                    Class current = getClass();
+                    if(current==ComplimentsSection.class) {
+                        Intent intent = new Intent(v.getContext(), CommentsSection.class);
+                        con.startActivity(intent);
+                    }
+                    else if(current==ConfessionSection.class) {
+                        Intent intent = new Intent(v.getContext(), CommentsConfesh.class);
+                        con.startActivity(intent);
+                    }
+                    else{
+                        Intent intent = new Intent(v.getContext(), CommentsQA.class);
+                        con.startActivity(intent);
+                    }
                 }
             });
         }

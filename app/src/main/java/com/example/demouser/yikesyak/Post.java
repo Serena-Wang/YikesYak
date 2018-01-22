@@ -14,6 +14,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Represents a text post.
  */
@@ -21,6 +23,15 @@ public class Post {
 
     public String text;
     public String date;
+    public int votes;
+    public ArrayList<Comment> comments;
+
+    public Post(String text, String date, int votes, ArrayList<Comment> comments){
+        this.text = text;
+        this.date = date;
+        this.votes = votes;
+        this.comments = comments;
+    }
 
 }
 
