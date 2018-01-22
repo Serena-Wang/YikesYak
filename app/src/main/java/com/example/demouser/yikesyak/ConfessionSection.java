@@ -1,5 +1,7 @@
 package com.example.demouser.yikesyak;
 
+
+import android.support.v7.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;

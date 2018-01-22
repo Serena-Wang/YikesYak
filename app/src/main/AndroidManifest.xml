@@ -9,12 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomePage">
+
+        <activity android:name=".LogIn">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+
+        <activity android:name=".HomePage"
+            android:parentActivityName=".LogIn">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.demouser.yikesyak.LogIn" />
+
+
         </activity>
 
         <activity
@@ -23,25 +36,25 @@
             android:parentActivityName=".HomePage">
 
             <meta-data
-             android:name="android.support.PARENT_ACTIVITY"
-             android:value="com.example.demouser.yikesyak.HomePage" />
-         </activity>
-
-         <activity
-             android:name=".ConfessionSection"
-            android:label="@string/confessional"
-             android:parentActivityName=".HomePage">
-
-             <meta-data
-                 android:name="android.support.PARENT_ACTIVITY"
-                 android:value="com.example.demouser.yikesyak.HomePage" />
-
-         </activity>
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.demouser.yikesyak.HomePage" />
+        </activity>
 
         <activity
-        android:name=".QASection"
-        android:label="@string/q_a"
- 
+            android:name=".ConfessionSection"
+            android:label="@string/confessional"
+            android:parentActivityName=".HomePage">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.demouser.yikesyak.HomePage" />
+
+        </activity>
+
+        <activity
+            android:name=".QASection"
+            android:label="@string/q_a"
+
             android:parentActivityName=".HomePage">
 
             <meta-data
@@ -52,10 +65,9 @@
 
         </activity>
 
-    <meta-data
-        android:name="preloaded_fonts"
-        android:resource="@array/preloaded_fonts" />
-</application>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
 
-    </manifest>
-
+</manifest>

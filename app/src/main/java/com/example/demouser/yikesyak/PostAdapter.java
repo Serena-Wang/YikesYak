@@ -1,6 +1,8 @@
 package com.example.demouser.yikesyak;
 
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,9 +31,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     public void onBindViewHolder(PostHolder postHolder, int i) {
         Post post = postList.get(i);
         //Set the text of the feed with your data
-        postHolder.feedText.setText(post.text);
+        postHolder.feedText.setText((CharSequence) post.text);
         postHolder.feedText.setTypeface(postHolder.feedText.getTypeface(), Typeface.BOLD);
-        postHolder.dateText.setText(post.date);
+        postHolder.dateText.setText((CharSequence) post.date);
     }
 
     @Override
@@ -62,6 +64,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
             commentsButton = (Button) v.findViewById(R.id.comments);
             reportButton = (ImageButton) v.findViewById(R.id.report);
             vote();
+            reportButton();
         }
 
         private void vote() {
@@ -96,12 +99,18 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
             final ImageButton button = reportButton;
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-
+                    String emails [] = {"altha22n@mtholyoke.edu", "gomez22n@mtholyoke.edu",
+                            "tucks22e@mtholyoke.edu", "wang225y@mtholyoke.edu"};
+                    Intent intent = new Intent (Intent.ACTION_SEND);
+                    intent.putExtra(Intent.EXTRA_EMAIL, emails);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+                    intent.putExtra(Intent.EXTRA_TEXT, "Reason for Reporting");
+                    v.getContext().startActivity(intent);
                 }
+
             });
         }
     }
 
 }
-
-
