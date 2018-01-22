@@ -99,11 +99,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
             final ImageButton button = reportButton;
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
+                    String emails [] = {"altha22n@mtholyoke.edu", "gomez22n@mtholyoke.edu",
+                            "tucks22e@mtholyoke.edu", "wang225y@mtholyoke.edu"};
                     Intent intent = new Intent (Intent.ACTION_SEND);
-                    intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"gomez22n@mtholyoke.edu"});
+                    intent.putExtra(Intent.EXTRA_EMAIL, emails);
                     intent.setType("text/plain");
                     intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
-                    intent.putExtra(Intent.EXTRA_TEXT, "Message body");
+                    intent.putExtra(Intent.EXTRA_TEXT, "Reason for Reporting");
                     v.getContext().startActivity(intent);
                 }
 
