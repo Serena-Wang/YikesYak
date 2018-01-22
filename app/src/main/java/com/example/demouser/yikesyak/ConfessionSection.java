@@ -75,13 +75,13 @@ public class ConfessionSection extends AppCompatActivity {
         builder.setPositiveButton("YIKES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Post post = new Post();
-                post.text = subEditText.getText().toString();
+               // Post post = new Post();
+               // post.text = subEditText.getText().toString();
                 long dateText = System.currentTimeMillis();
                 SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy h:mm a");
-                post.date = sdf.format(dateText);
+               // post.date = sdf.format(dateText);
                 //Add data to the list
-                list.add(post);
+               // list.add(post);
                 //Notify the Adapter so that you can see the changes.
                 pa.notifyDataSetChanged();
                 //Scroll the RecyclerView to the bottom.
