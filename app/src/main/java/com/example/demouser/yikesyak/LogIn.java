@@ -65,7 +65,7 @@ public class LogIn extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
-
+  
         //setContentView(R.layout.home_page_main);
 
         // Views
