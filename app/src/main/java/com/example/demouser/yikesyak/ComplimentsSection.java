@@ -1,6 +1,7 @@
 package com.example.demouser.yikesyak;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.constraint.ConstraintLayout;
@@ -11,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +21,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +34,26 @@ public class ComplimentsSection extends AppCompatActivity {
     private RecyclerView recList;
     private List<Post> list;
     private TextView subEditText;
+    private ArrayList<Comment> commentsList;
     private PostAdapter pa;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.compliments_main);
+
         //Declares the view for your feed
-        list = new ArrayList<Post>();
+
+        SharedPreferences settings = getSharedPreferences(getString(R.string.PrefsFile), 0);
+        Gson gson = new Gson();
+        String json = settings.getString(getString(R.string.CompPostsKey), "");
+        Type type = new TypeToken<List<Post>>(){}.getType();
+        if (gson.fromJson(json, type) != null) {
+            list = gson.fromJson(json, type);
+        }
+        else{
+            list = new ArrayList<>();
+        }
         //Set the layout and the RecyclerView
         recList = (RecyclerView) findViewById(R.id.postList);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -48,7 +66,10 @@ public class ComplimentsSection extends AppCompatActivity {
         recList.setAdapter(pa);
         addPost();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
     }
+
 
     protected void addPost(){
         final Button postButton = findViewById(R.id.post);
@@ -67,9 +88,7 @@ public class ComplimentsSection extends AppCompatActivity {
     private void openDialog(){
         LayoutInflater inflater = LayoutInflater.from(ComplimentsSection.this);
         View subView = inflater.inflate(R.layout.dialog, null);
-
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         builder.setView(subView);
         //Build the AlertDialog.
         AlertDialog alertDialog = builder.create();
@@ -78,19 +97,26 @@ public class ComplimentsSection extends AppCompatActivity {
         builder.setPositiveButton("YIKES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Post post = new Post();
-                post.text = subEditText.getText().toString();
+                String text = subEditText.getText().toString();
                 long dateText = System.currentTimeMillis();
                 SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy h:mm a");
-                String dateString = sdf.format(dateText);
-                post.date = dateString;
+                String date = sdf.format(dateText);
+
+                Post post = new Post(text, date, 0, commentsList);
+
                 //Add data to the list
                 list.add(post);
+
+                SharedPreferences settings = getSharedPreferences(getString(R.string.PrefsFile), 0);
+                Gson gson = new Gson();
+                String json = gson.toJson(list);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString(getString(R.string.CompPostsKey),json);
+                editor.apply();
                 //Notify the Adapter so that you can see the changes.
                 pa.notifyDataSetChanged();
                 //Scroll the RecyclerView to the bottom.
                 recList.smoothScrollToPosition(pa.getItemCount());
-
             }
         });
 
