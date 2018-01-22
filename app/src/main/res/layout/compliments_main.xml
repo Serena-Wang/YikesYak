@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/white"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,60 +15,30 @@
 
 
         <Button
+            android:id="@+id/post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_weight="1"
-            android:text="Top" />
+            android:elevation="7dp"
+            android:text="Yak a yikes"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="50dp" />
 
-    </LinearLayout>
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_alignParentStart="true">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginTop="-5dp"
-            android:background="@android:color/white"
-            android:text="@string/type_a_new_post" />
-
-
-
-
-      <Button
-        android:id="@+id/post"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:elevation="7dp"
-          android:layout_weight="1"
-        android:text="Yak a yikes"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="50dp" />
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:elevation="7dp"
             android:layout_weight="1"
+            android:elevation="7dp"
             android:text="To Top"
+            android:textStyle="bold"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absoluteY="50dp" />
-     </LinearLayout>
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/postList"

@@ -1,6 +1,7 @@
 package com.example.demouser.yikesyak;
 
 
+import android.support.v7.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
@@ -19,7 +20,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ConfessionSection extends AppCompatActivity {
 
     private RecyclerView recList;
@@ -28,16 +28,10 @@ public class ConfessionSection extends AppCompatActivity {
     private PostAdapter pa;
     private Button postButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confession_main);
-
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
         //Declares the view for your feed
         list = new ArrayList<Post>();
         //Set the layout and the RecyclerView
@@ -81,13 +75,13 @@ public class ConfessionSection extends AppCompatActivity {
         builder.setPositiveButton("YIKES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Post post = new Post();
-                post.text = subEditText.getText().toString();
+               // Post post = new Post();
+               // post.text = subEditText.getText().toString();
                 long dateText = System.currentTimeMillis();
                 SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy h:mm a");
-                post.date = sdf.format(dateText);
+               // post.date = sdf.format(dateText);
                 //Add data to the list
-                list.add(post);
+               // list.add(post);
                 //Notify the Adapter so that you can see the changes.
                 pa.notifyDataSetChanged();
                 //Scroll the RecyclerView to the bottom.
@@ -102,7 +96,6 @@ public class ConfessionSection extends AppCompatActivity {
             }
         });
         builder.show();
-
     }
 
 }
