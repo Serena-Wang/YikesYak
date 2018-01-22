@@ -24,6 +24,8 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.w3c.dom.Comment;
+
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class ComplimentsSection extends AppCompatActivity {
     private RecyclerView recList;
     private List<Post> list;
     private TextView subEditText;
-    private ArrayList<Comment> commentsList;
+    private ArrayList<com.example.demouser.yikesyak.Comment> commentsList;
     private PostAdapter pa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class ComplimentsSection extends AppCompatActivity {
         }
         else{
             list = new ArrayList<>();
+            commentsList = new ArrayList<com.example.demouser.yikesyak.Comment>();
         }
         //Set the layout and the RecyclerView
         recList = (RecyclerView) findViewById(R.id.postList);
